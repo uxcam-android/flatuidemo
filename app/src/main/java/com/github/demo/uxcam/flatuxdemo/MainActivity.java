@@ -2,7 +2,6 @@ package com.github.demo.uxcam.flatuxdemo;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,7 +15,7 @@ import com.cengalabs.flatui.views.FlatRadioButton;
 import com.cengalabs.flatui.views.FlatSeekBar;
 import com.cengalabs.flatui.views.FlatTextView;
 import com.cengalabs.flatui.views.FlatToggleButton;
-import com.uxcam.lib.UXCam;
+import com.uxcam.UXCam;
 
 import java.util.ArrayList;
 
@@ -46,6 +45,8 @@ public class MainActivity extends ActionBarActivity {
         FlatUI.setDefaultTheme(APP_THEME);
 
         setContentView(R.layout.activity_main);
+
+        UXCam.startApplication(this);
 
         // Getting action bar background and applying it
         getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(this, APP_THEME, false, 2));
@@ -226,31 +227,6 @@ public class MainActivity extends ActionBarActivity {
         getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(this, colorReference, false));
 
         setTitle("FlatUI Sample App");
-    }
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        UXCam.start(this);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        UXCam.stop();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        UXCam.pause();
-    }
-
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
-        UXCam.dispatchTouchEvent(event);
-        return super.dispatchTouchEvent(event);
     }
 
 }
